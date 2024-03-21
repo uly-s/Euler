@@ -24,10 +24,6 @@ const sunday = (day, month, year) => {
     return (daysGoneBy(day, month, year) + 1) % 7 == 0;
 }
 
-//console.log(dayOfTheWeek(daysGoneBy(7, 1, 1900)));
-
-//console.log(daysGoneBy(21, 3, 2024));
-
 let count = 0;
 
 range(1901, 2000).forEach(year => {

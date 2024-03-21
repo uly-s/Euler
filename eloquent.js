@@ -5,16 +5,27 @@ function print(val) {
     console.log(val);
 }
 
-function sum(vals) {
-    // add if vals[0] is a number
-    let total = 0;
+// function sum(vals) {
+//     // add if vals[0] is a number
+//     let total = 0;
 
-    for (let val of vals) {
-       total += val;
-    }
+//     for (let val of vals) {
+//        total += val;
+//     }
 
+//     return total;
+// }
+
+Array.prototype.sum = function(start=0, end=this.length) {
+    if (typeof this[0] !== 'number' || end >= this.length) return;
+    let total  = 0;
+    for (let i = start; i <= end; i++) total += this[i];
     return total;
-}
+};
+
+let test = [1, 2, 3];
+
+print(test.sum(1, 2));
 
 function range(start, end, step=1) {
     let vals = [];
@@ -55,9 +66,9 @@ function unless(test, then) {
     if (!test) return then();
 }
 
-unless(1 == 0, () => {
-    print("yo");
-})
+// unless(1 == 0, () => {
+//     print("yo");
+// })
 
 function loop(spec, action) {
     for(let i = spec[0]; i < spec[1]; i += spec[2]) {
@@ -76,7 +87,6 @@ const when = (condition, fn) => {
 module.exports = {
     range, 
     print, 
-    sum, 
     repeat, 
     unless, 
     loop,
