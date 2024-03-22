@@ -16,16 +16,16 @@ function print(val) {
 //     return total;
 // }
 
-Array.prototype.sum = function(start=0, end=this.length) {
-    if (typeof this[0] !== 'number' || end >= this.length) return;
-    let total  = 0;
-    for (let i = start; i <= end; i++) total += this[i];
-    return total;
-};
+function prototypes() {
 
-let test = [1, 2, 3];
+    Array.prototype.sum = function(start=0, end=this.length) {
+        if (typeof this[0] !== 'number' || end >= this.length) return;
+        let total  = 0;
+        for (let i = start; i <= end; i++) total += this[i];
+        return total;
+    };
 
-print(test.sum(1, 2));
+}
 
 function range(start, end, step=1) {
     let vals = [];
@@ -46,14 +46,7 @@ function range(start, end, step=1) {
 // }
 
 // see if that dumb lambda can be cleaned up
-function repeat(n, action) {
-    for (let i = 0; i < n; i++) {
-      action();
-    }
-}
-
-// add for spread
-function repeat(n, action, args) {
+function repeat(n, action, args=undefined) {
     for (let i = 0; i < n; i++) {
       action(args);
     }
@@ -84,11 +77,4 @@ const when = (condition, fn) => {
   
 
 
-module.exports = {
-    range, 
-    print, 
-    repeat, 
-    unless, 
-    loop,
-    when
-};
+export {print, range, repeat, unless, loop, when, prototypes};

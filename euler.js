@@ -19,7 +19,4 @@ function generatePrimes(n) {
     return primes;
 };
 
-module.exports = {
-    isPrime,
-    generatePrimes
-}
+export {isPrime, generatePrimes};
