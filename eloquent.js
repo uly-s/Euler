@@ -1,9 +1,15 @@
 const fn = 0;
 
 // add for spread
-function print(val) {
-    console.log(val);
+function print(...val) {
+    let output = val.length == 1 ? 
+        val[0] :
+        val.toString().replace(",", " ");
+    console.log(output);
 }
+
+let obj = {a:1, b:2};
+print(1);
 
 // function sum(vals) {
 //     // add if vals[0] is a number
