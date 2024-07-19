@@ -1,3 +1,5 @@
+from math import sqrt, log10, floor, ceil
+
 count = 0
 rep = 0
 
@@ -17,7 +19,7 @@ for i in range(1, 1000):
     #     print(i, "pass")
     # elif count % 19 == 0 or count % 24 == 0 and rule:
     #     print(i,"fail")
-    print(i, len(str(fib(i))))
+    #print(i, len(str(fib(i))))
 
 """
 The 7nth term is the first with 2 digits
@@ -77,3 +79,39 @@ def digits(n):
 # index -> given a number n, return the index of the first fibonacci number with that many digits
 def index(n):
     pass
+
+"""
+Using chatgpt;
+We have an explicit formula for fibonacci numbers using Binet's formula F(n) will give us the nth fibonacci number.
+Using the properties of logarithms the number of digits in a number can be calculated with another formula we'll call d(n).
+Thus by composing the two, we have a formula we'll call DFib that calculated d(F(n)) => thus giving us the digits of the nth fibonacci number.
+For a fibonacci number to have at least 'd' digits we need DFib(n) >= d-1 
+Then, by writing out the (approximmation) of our formula and solving for n we are left with the explicit formula to solve for the index 'n' of the first fibonacci number with 'd' digits.
+we'll call it iDFib(d) -> n
+---
+So looking back to today and yesterday's work; I was sure this was going to need some crazyness with proofs I had long forgotten about.
+But I forget something even more bedrock in mathematics; setting up an equation to solve for the number you want.
+This was facilitated by not stopping to look a little deeper into fibonacci numbers.
+"""
+
+phi = (1 + sqrt(5)) / 2
+psi = 1 - phi
+
+def F(n):
+    return int((phi**n - (1 - phi)**n) // sqrt(5))
+
+def d(n):
+    return floor(log10(n)) + 1
+
+def iDFib(d):
+    num = (d-1) + log10(sqrt(5))
+    denom = log10(phi)
+    n = ((num / denom))
+    return n
+
+# close as we're gonna get ~ 4781
+print(iDFib(1000))
+
+"""
+Next time, maybe look into studying some basic fundamentals, pen and paper stuff. Sounds satisfying. Like doing mental pushups.
+"""
