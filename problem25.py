@@ -106,7 +106,7 @@ def d(n):
 def iDFib(d):
     num = (d-1) + log10(sqrt(5))
     denom = log10(phi)
-    n = ((num / denom))
+    n = ceil(num / denom)
     return n
 
 # close as we're gonna get ~ 4781
@@ -114,4 +114,6 @@ print(iDFib(1000))
 
 """
 Next time, maybe look into studying some basic fundamentals, pen and paper stuff. Sounds satisfying. Like doing mental pushups.
+---
+Lastly, your instincts told you precisely that's why and where you wanted 'ceil', dummy. Slow down to look at your output next time.
 """
